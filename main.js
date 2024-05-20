@@ -8,6 +8,8 @@ let restart=document.querySelector('.restart');
 cell.forEach(cell => cell.addEventListener('click', processCellClick));
 restart.addEventListener('click', restartGame);
 let clickSound = new Audio('Asset/click.mp3');
+let draw = new Audio('Asset/music3.mp3');
+let winning=new Audio('Asset/winning.mp3');
 
 let updateStatusMessage = (message, color = " rgb(253 253 253)") => {
     statusDisplay.innerHTML = message;
@@ -38,11 +40,13 @@ function validateGameResult() {
         }
     }
     if (roundWon) {
+        winning.play();
         updateStatusMessage(`Player ${currentPlayer} has won!`, "rgb(251,100,204)");
         gameActive = false;
         return;
     }
     if (!gameState.includes("")) {
+        draw.play();
         updateStatusMessage("Game ended in a draw!", "rgb(251,100,204)");
         gameActive = false;
         return;
