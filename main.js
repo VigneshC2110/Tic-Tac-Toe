@@ -9,7 +9,7 @@ cell.forEach(cell => cell.addEventListener('click', processCellClick));
 restart.addEventListener('click', restartGame);
 let clickSound = new Audio('Asset/click.mp3');
 
-let updateStatusMessage = (message, color = "rgb(65, 65, 65)") => {
+let updateStatusMessage = (message, color = " rgb(253 253 253)") => {
     statusDisplay.innerHTML = message;
     statusDisplay.style.color = color;
 };
@@ -23,7 +23,7 @@ function playCell(cell, index) {
 }
 
 function switchPlayer() {
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    currentPlayer = currentPlayer == "X" ? "O" : "X";
     updateStatusMessage(`It's ${currentPlayer}'s turn`);
 }
 
