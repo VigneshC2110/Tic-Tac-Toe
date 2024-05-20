@@ -93,3 +93,11 @@ a:visited {
     background-color: rgb(185, 185, 185);
     box-shadow: 0 5px 15px rgba(167, 167, 167, 0.4);
 }
+@media only screen and (max-width: 1000px) {
+    #backgroundVideo {
+      background-size: cover;
+      height: 100%;
+      width: auto;
+  }
+  }
+  
