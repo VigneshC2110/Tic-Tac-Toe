@@ -41,12 +41,10 @@ body {
     margin-top: 2.4rem;
     margin-bottom: 0.6rem;
 }
-
 .container {
     display: flex;
     margin: 3rem 0 1rem 0;
 }
-
 .cell {
     width: 108px;
     height: 108px;
@@ -75,7 +73,6 @@ a:visited {
     font-size: 20px;
     font-weight: 600;
 }
-
 .restart {
     color: rgb(65, 65, 65);
     background-color: rgb(231, 231, 231);
@@ -87,7 +84,6 @@ a:visited {
     width: 181px;
     cursor: pointer;
 }
-
 .restart:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(185, 185, 185);
