@@ -3,6 +3,11 @@ let gameActive = true;
 let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
 let winningConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [2, 4, 6]];
+let cell=document.querySelectorAll('.cell');
+let restart=document.querySelector('.restart');
+cell.forEach(cell => cell.addEventListener('click', processCellClick));
+restart.addEventListener('click', restartGame);
+let clickSound = new Audio('Asset/click.mp3');
 
 let updateStatusMessage = (message, color = "rgb(65, 65, 65)") => {
     statusDisplay.innerHTML = message;
@@ -14,6 +19,7 @@ updateStatusMessage(`It's ${currentPlayer}'s turn`);
 function playCell(cell, index) {
     gameState[index] = currentPlayer;
     cell.innerHTML = currentPlayer;
+    clickSound.play();
 }
 
 function switchPlayer() {
@@ -31,13 +37,11 @@ function validateGameResult() {
             break;
         }
     }
-
     if (roundWon) {
         updateStatusMessage(`Player ${currentPlayer} has won!`, "rgb(251,100,204)");
         gameActive = false;
         return;
     }
-
     if (!gameState.includes("")) {
         updateStatusMessage("Game ended in a draw!", "rgb(251,100,204)");
         gameActive = false;
@@ -66,5 +70,11 @@ function restartGame() {
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 
-document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', processCellClick));
-document.querySelector('.restart').addEventListener('click', restartGame);
+function startBackgroundMusic() {
+    let backgroundMusic = document.getElementById('backgroundMusic');
+    if (backgroundMusic.paused) {
+        backgroundMusic.play()
+    }
+}
+
+document.body.addEventListener('click', startBackgroundMusic);
